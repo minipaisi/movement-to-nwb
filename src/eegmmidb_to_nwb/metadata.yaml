@@ -1,0 +1,49 @@
+NWBFile:
+  experiment_description: >-
+    EEG Motor Movement/Imagery Dataset (PhysioNet, eegmmidb 1.0.0). 109 volunteers performed
+    executed and imagined movements of the fists and feet in response to visual targets, plus
+    eyes-open and eyes-closed baselines, in 14 runs. 64-channel EEG recorded with the BCI2000
+    system at 160 Hz.
+  institution: Wadsworth Center, New York State Department of Health
+  lab: BCI R&D Program
+  experimenter:
+    - Sarnacki, W. A.
+  related_publications:
+    - "https://doi.org/10.1109/TBME.2004.827072"
+    - "https://doi.org/10.13026/C28G6P"
+  keywords:
+    - EEG
+    - motor imagery
+    - brain-computer interface
+    - BCI2000
+Subject:
+  species: Homo sapiens
+  sex: U
+  description: >-
+    Healthy volunteer. The dataset does not publish age or sex for individual subjects.
+Devices:
+  bci2000:
+    name: BCI2000
+    description: 64-channel EEG recorded with the BCI2000 general-purpose brain-computer interface system.
+Ecephys:
+  ElectrodeGroups:
+    eeg:
+      name: EEG
+      description: 64 scalp electrodes placed according to the international 10-10 system.
+      location: scalp
+      device_metadata_key: bci2000
+  Electrodes:
+    - name: edf_label
+      description: Channel label as stored in the EDF header (for example "Fc5.").
+    - name: template_x
+      description: >-
+        Template x position in metres (+x towards the right ear), from MNE's 10-05 montage
+        (colin27_1005, formerly standard_1005), head frame. A template, not measured on this subject.
+    - name: template_y
+      description: Template y position in metres (+y towards the nasion), same template montage.
+    - name: template_z
+      description: Template z position in metres (+z towards the vertex), same template montage.
+  ElectricalSeries:
+    edf_recording:
+      name: ElectricalSeries
+      description: Raw scalp EEG, stored as int16 digital values with the conversion factor to volts.
