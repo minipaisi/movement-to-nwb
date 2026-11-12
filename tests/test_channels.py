@@ -1,12 +1,20 @@
 import pytest
+from conftest import PHYSIONET_LABELS
 
 from eegmmidb_to_nwb.channels import clean_channel_name, get_template_position
-from conftest import PHYSIONET_LABELS
 
 
 @pytest.mark.parametrize(
     "raw, clean",
-    [("Fc5.", "FC5"), ("Fpz.", "Fpz"), ("Cz..", "Cz"), ("Iz..", "Iz"), ("T10.", "T10"), ("Afz.", "AFz"), ("Po7.", "PO7")],
+    [
+        ("Fc5.", "FC5"),
+        ("Fpz.", "Fpz"),
+        ("Cz..", "Cz"),
+        ("Iz..", "Iz"),
+        ("T10.", "T10"),
+        ("Afz.", "AFz"),
+        ("Po7.", "PO7"),
+    ],
 )
 def test_clean_channel_name(raw, clean):
     assert clean_channel_name(raw) == clean

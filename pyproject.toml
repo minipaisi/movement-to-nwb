@@ -3,29 +3,36 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "eegmmidb-to-nwb"
-version = "0.1.0"
-description = "Convert the PhysioNet EEG Motor Movement/Imagery Dataset (EDF) to NWB with NeuroConv."
+name = "movement-to-nwb"
+version = "0.2.0"
+description = "Convert open human movement datasets (EEG motor tasks, multi-camera pose estimation) to NWB with NeuroConv."
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Pablo Paisán García" }]
 requires-python = ">=3.10"
 dependencies = [
     "neuroconv[edf]>=0.10",
-    "pynwb>=3.0",
+    "pynwb>=4.0",
     "mne>=1.6",
+    "ndx-pose>=0.4",
+    "tomli; python_version < '3.11'",
 ]
 
 [project.optional-dependencies]
-test = ["pytest", "nwbinspector>=0.6", "edfio"]
+test = ["pytest", "nwbinspector>=0.6", "edfio", "opencv-python-headless"]
 
 [project.scripts]
 eegmmidb-to-nwb = "eegmmidb_to_nwb.cli:main"
 eegmmidb-download = "eegmmidb_to_nwb.download:main"
+pose2sim-to-nwb = "pose2sim_to_nwb.cli:main"
+pose2sim-demo-download = "pose2sim_to_nwb.download:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/eegmmidb_to_nwb"]
+packages = ["src/eegmmidb_to_nwb", "src/pose2sim_to_nwb"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning"]
+
+[tool.ruff]
+line-length = 120

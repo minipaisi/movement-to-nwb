@@ -46,21 +46,37 @@ def get_run_info(run: int) -> RunInfo:
     # Runs 3 to 14 cycle through four tasks: 3, 7, 11 / 4, 8, 12 / 5, 9, 13 / 6, 10, 14
     task_index = (run - 3) % 4
     if task_index == 0:
-        return RunInfo(run, "left_right_fist_executed",
-                       "Open and close the left or right fist as a target appears on the left or right "
-                       "side of the screen, then relax.",
-                       "executed", _LEFT_RIGHT)
+        return RunInfo(
+            run,
+            "left_right_fist_executed",
+            "Open and close the left or right fist as a target appears on the left or right "
+            "side of the screen, then relax.",
+            "executed",
+            _LEFT_RIGHT,
+        )
     if task_index == 1:
-        return RunInfo(run, "left_right_fist_imagined",
-                       "Imagine opening and closing the left or right fist as a target appears on the "
-                       "left or right side of the screen, then relax.",
-                       "imagined", _LEFT_RIGHT)
+        return RunInfo(
+            run,
+            "left_right_fist_imagined",
+            "Imagine opening and closing the left or right fist as a target appears on the "
+            "left or right side of the screen, then relax.",
+            "imagined",
+            _LEFT_RIGHT,
+        )
     if task_index == 2:
-        return RunInfo(run, "fists_feet_executed",
-                       "Open and close both fists (target at the top of the screen) or both feet "
-                       "(target at the bottom), then relax.",
-                       "executed", _FISTS_FEET)
-    return RunInfo(run, "fists_feet_imagined",
-                   "Imagine opening and closing both fists (target at the top of the screen) or both "
-                   "feet (target at the bottom), then relax.",
-                   "imagined", _FISTS_FEET)
+        return RunInfo(
+            run,
+            "fists_feet_executed",
+            "Open and close both fists (target at the top of the screen) or both feet "
+            "(target at the bottom), then relax.",
+            "executed",
+            _FISTS_FEET,
+        )
+    return RunInfo(
+        run,
+        "fists_feet_imagined",
+        "Imagine opening and closing both fists (target at the top of the screen) or both "
+        "feet (target at the bottom), then relax.",
+        "imagined",
+        _FISTS_FEET,
+    )

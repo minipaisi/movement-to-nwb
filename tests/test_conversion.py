@@ -4,11 +4,11 @@ from pathlib import Path
 import mne
 import numpy as np
 import pytest
+from conftest import write_synthetic_edf
 from nwbinspector import Importance, inspect_nwbfile, load_config
 from pynwb import NWBHDF5IO
 
 from eegmmidb_to_nwb import convert_run, convert_subject, parse_edf_name
-from conftest import write_synthetic_edf
 
 
 def read_nwb(path):

@@ -37,13 +37,15 @@ class EEGMMIDBTrialsInterface(BaseDataInterface):
         nwbfile.add_trial_column(name="annotation_code", description="Annotation code in the EDF file (T0, T1 or T2).")
         nwbfile.add_trial_column(
             name="condition",
-            description="What the annotation code means in this run: rest, left_fist, right_fist, both_fists or both_feet.",
+            description=(
+                "What the annotation code means in this run: rest, left_fist, right_fist, both_fists or both_feet."
+            ),
         )
         nwbfile.add_trial_column(
             name="movement_type",
             description="executed (real movement), imagined (motor imagery) or none (rest and baseline).",
         )
-        for onset, duration, code in zip(annotations.onset, annotations.duration, annotations.description):
+        for onset, duration, code in zip(annotations.onset, annotations.duration, annotations.description, strict=True):
             condition = self.run_info.conditions[code]
             movement_type = "none" if condition == "rest" else self.run_info.movement_type
             nwbfile.add_trial(

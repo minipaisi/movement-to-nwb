@@ -1,0 +1,19 @@
+NWBFile:
+  experiment_description: >-
+    Demonstration trial published with Pose2Sim 0.8.0 (S01_Demo_SingleTrial): one person balancing on a
+    beam, filmed by four calibrated cameras at 60 frames per second, with 2D keypoints from OpenPose
+    BODY_25B. The release has no video for this trial and no recording date.
+  related_publications:
+    - "https://doi.org/10.21105/joss.04362"
+    - "https://doi.org/10.3390/s22072712"
+  keywords:
+    - markerless motion capture
+    - pose estimation
+    - OpenPose
+    - multi-view triangulation
+Subject:
+  species: Homo sapiens
+  sex: U
+  description: >-
+    Person in the Pose2Sim demonstration. Age and sex are not published. Config.toml lists a height of
+    1.72 m and a mass of 70 kg for model scaling; these were not checked against the participant.

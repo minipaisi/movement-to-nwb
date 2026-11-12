@@ -43,7 +43,7 @@ class EEGMMIDBRecordingInterface(EDFRecordingInterface):
         recording.set_property("edf_label", raw_names)
         recording.set_property("group_name", ["EEG"] * len(names))
         recording.set_property("brain_area", ["scalp"] * len(names))
-        for axis, values in zip("xyz", zip(*positions)):
+        for axis, values in zip("xyz", zip(*positions, strict=True), strict=True):
             recording.set_property(f"template_{axis}", list(values))
 
 
@@ -66,8 +66,7 @@ class EEGMMIDBConverter(NWBConverter):
 
         metadata["NWBFile"]["session_id"] = f"{subject_id}R{run:02d}"
         metadata["NWBFile"]["session_description"] = (
-            f"Run {run} of 14 for subject {subject_id}: {run_info.description} "
-            f"Task: {run_info.task}."
+            f"Run {run} of 14 for subject {subject_id}: {run_info.description} Task: {run_info.task}."
         )
         metadata["Subject"]["subject_id"] = subject_id
         return metadata
