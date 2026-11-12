@@ -1,5 +1,23 @@
 # movement-to-nwb
 
+[![tests](https://github.com/minipaisi/movement-to-nwb/actions/workflows/tests.yml/badge.svg)](https://github.com/minipaisi/movement-to-nwb/actions/workflows/tests.yml)
+
+Raw movement recordings tend to lose their context: which camera saw what, how it was calibrated, which person in
+the frame is the participant, what a marker in an EEG file meant in that run. This repository turns two open
+datasets (multi-camera pose estimation and 64-channel EEG) into NWB, a self-describing data standard, so that
+context travels with the signal and every value can be traced back to its source.
+
+**At a glance:** 98 automated tests run in CI on Python 3.10 and 3.12 · 3D points within 9.1 mm (median) of
+Pose2Sim's own result · 2D keypoints stored losslessly and checked value by value · EEG signal checked sample by
+sample against MNE · output validated with NWB Inspector's DANDI configuration.
+
+![One Pose2Sim demo trial after conversion: OpenPose 2D detections from four cameras and the triangulated 3D keypoints](docs/pose2sim_demo.png)
+
+*One real trial from the Pose2Sim demo after conversion: what OpenPose detected in each of the four cameras, and the
+3D keypoints triangulated from them and stored in the NWB file. Figure made with `docs/make_figure.py`.*
+
+## Details
+
 Two conversions of open human movement data to [NWB](https://www.nwb.org/) with
 [NeuroConv](https://github.com/catalystneuro/neuroconv), each ready for [NWB
 Inspector](https://github.com/NeurodataWithoutBorders/nwbinspector) and [DANDI](https://dandiarchive.org/):
